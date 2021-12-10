@@ -7,6 +7,9 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+  body {
+    background-color: ${p => p.theme.bgCol};
+  }
   html {
     font-size: 125%;
     font-family: Arial, sans-serif;
@@ -18,8 +21,9 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
   .active {
-    border-bottom: 2px solid rgb(50, 150, 160);
-    padding-bottom: 5px;
+    border-bottom: 2px solid ${p => p.theme.textCol};
+
+    padding-bottom: 20px;
   }
 `;
 
@@ -27,12 +31,17 @@ const GlobalStyle = createGlobalStyle`
 
 export const darkTheme = {
   navCol: "grey",
-  bgCol: "lightgrey",
-  textCol: "darkgrey",
+  bgCol: "#484D5E",
+  textCol: "white",
+  inputBg: "#3E4251",
+
 }
+
+
 export const lightTheme = {
   navCol: "grey",
-  bgCol: "lightgrey"
+  bgCol: "lightgrey",
+  textCol: "black",
 }
 
 export default GlobalStyle
