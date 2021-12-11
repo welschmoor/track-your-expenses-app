@@ -1,3 +1,9 @@
+/*
+Good Icon Color on background:  color: #3b3e4a;
+
+*/
+
+
 import { createGlobalStyle } from "styled-components"
 
 
@@ -7,23 +13,38 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
   body {
     background-color: ${p => p.theme.bgCol};
   }
+
   html {
     font-size: 125%;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
   }
+
   a {
     text-decoration: none;
   }
+
   ul {
     list-style: none;
   }
+
   .active {
     border-bottom: 2px solid ${p => p.theme.textCol};
 
     padding-bottom: 20px;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 10px 100px ${p => p.theme.inputBg} inset, 0 1px 1px 0px hsla(0, 0%, 100%, .15), inset 0 2px 2px hsla(0, 0%, 0%, 0.1) !important;
+    -webkit-text-fill-color: hsl(240, 17%, 80%) !important;
+    border-radius: 9px;
+    border: 0px solid ${p => p.theme.inputBg};
   }
 `;
 
@@ -32,9 +53,9 @@ const GlobalStyle = createGlobalStyle`
 export const darkTheme = {
   navCol: "grey",
   bgCol: "#484D5E",
-  textCol: "white",
+  textCol: "#fafafa",
   inputBg: "#3E4251",
-
+  navMar: "20px",
 }
 
 

@@ -1,0 +1,18 @@
+import firebase from "firebase/app"
+import 'firebase/firestore'
+import 'firebase/auth'
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBZ_6BUHmLLDIoXKe-tjLNapoVjP2CpJa8",
+  authDomain: "expense-tracker-c6eb2.firebaseapp.com",
+  projectId: "expense-tracker-c6eb2",
+  storageBucket: "expense-tracker-c6eb2.appspot.com",
+  messagingSenderId: "590697718787",
+  appId: "1:590697718787:web:c11bae2be0bfd1964e5a36"
+};
+
+firebase.initializeApp(firebaseConfig)
+const firestore = firebase.firestore()
+const firebaseAuth = firebase.auth()
+
+export { firestore, firebaseAuth }
