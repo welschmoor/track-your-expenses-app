@@ -71,6 +71,11 @@ const NavLinkStyled = styled(NavLink)`
   text-shadow: 1px 1px 0px hsl(240, 17%, 24%);
   color: ${p => p.theme.textCol};
   padding-bottom: 20px;
+  padding-top: 16px;
+
+  &:hover {
+    border-bottom: 2px solid ${p => p.theme.textCol};
+  }
 `
 
 const HomeAboutDiv = styled.div`

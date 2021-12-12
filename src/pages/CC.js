@@ -5,12 +5,16 @@ import styled from "styled-components"
 import AddExpenseForm from "../components/AddExpenseForm"
 import { AuthContext } from "../App"
 import { useNavigate, Navigate } from "react-router-dom"
+import useCollection from "../hooks/useCollection"
+import List from "../components/List"
 
 
 const CC = () => {
   const { user } = useContext(AuthContext)
+  const { fetchedDocs, fetchError } = useCollection("transactions")
   console.log("userrr", user)
   const navigate = useNavigate ()
+
 
   if (user === null) {
     navigate('/')
@@ -19,14 +23,16 @@ const CC = () => {
         404...
       </div>
     )
-  
   } 
+
+
 
   return (
     <Wrapper>
       <ContentWrapper>
         <Title>Add expense</Title>
         <AddExpenseForm />
+        { fetchedDocs && <List fetchedDocs={fetchedDocs} />}
       </ContentWrapper>
     </Wrapper>
   )

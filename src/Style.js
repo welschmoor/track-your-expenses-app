@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .active {
-    border-bottom: 2px solid ${p => p.theme.textCol};
+    border-bottom: 2px solid ${p => p.theme.text4Col};
 
     padding-bottom: 20px;
   }
@@ -56,6 +56,8 @@ export const darkTheme = {
   textCol: "#fafafa",
   text2Col: "#ebebeb",
   text3Col: "hsl(240, 17%, 80%)",
+  text4Col: "hsl(240, 17%, 67%)",
+  text5Col: "hsl(240, 10%, 67%)",
   inputBg: "#3E4251",
   navMar: "20px",
 

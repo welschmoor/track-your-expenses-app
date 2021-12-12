@@ -20,8 +20,14 @@ const Login = () => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    logIn( e.target.email.value, e.target.password.value)
-    navigate('/cc')
+    try {
+      logIn( e.target.email.value, e.target.password.value)
+      if (!error.inlcudes("no user")) {
+        navigate("/cc")
+      }
+    } catch(error) {
+      console.log("error", error.message)
+    }
   }
 
   return (
