@@ -82,7 +82,7 @@ const PlusIcon = styled(IoAdd)`
   }
 `
 
-const EuroIcon = styled(CgEuro)`
+export const EuroIcon = styled(CgEuro)`
   font-size: 2rem;
   color: #686D7E;
   position: absolute;

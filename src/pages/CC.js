@@ -26,7 +26,6 @@ const CC = () => {
   } 
 
 
-
   return (
     <Wrapper>
       <ContentWrapper>
