@@ -5,34 +5,40 @@ import styled from "styled-components"
 import { IoEye } from "react-icons/io5"
 import Error from "../components/Error"
 import Filler from "../components/Filler"
+import { useLogin } from "../hooks/hooks"
+import { useNavigate } from "react-router"
+
 
 const Login = () => {
-  const [error, setError] = useState(null)
   const [showPWstate, setShowPWstate] = useState(false)
+  const { logIn, error, loading } = useLogin()
+  const navigate = useNavigate()
 
   const showPWhandler = () => {
-    setShowPWstate(p=>!p)
+    setShowPWstate(p => !p)
   }
 
   const submitHandler = (e) => {
     e.preventDefault()
+    logIn( e.target.email.value, e.target.password.value)
+    navigate('/cc')
   }
 
   return (
     < >
-    {error ? <Error errormsg={error} /> : <Filler />}
-    <Form name="loginform" onSubmit={submitHandler} >
-      <div>
-        <Label htmlFor="email">Enter your email </Label>
-        <INPUT type="email" name="email" id="email" required />
-      </div>
-      <div style={{ "position": "relative" }} >
-        <Label htmlFor="password">Enter your password </Label>
-        <INPUT type={ showPWstate ? "text" :"password"} name="password" id="password" style={{ "position": "relative" }} required />
-        <ShowPW onClick={showPWhandler} style={{  color: showPWstate? "hsl(226, 17%, 57%)":"hsl(226, 17%, 37%)" }} />
-      </div>
-      <Button type="submit" >Log In</Button>
-    </Form>
+      {error ? <Error errormsg={error} /> : <Filler />}
+      <Form name="loginform" onSubmit={submitHandler} >
+        <div>
+          <Label htmlFor="email">Enter your email </Label>
+          <INPUT type="email" name="email" id="email" required />
+        </div>
+        <div style={{ "position": "relative" }} >
+          <Label htmlFor="password">Enter your password </Label>
+          <INPUT type={showPWstate ? "text" : "password"} name="password" id="password" style={{ "position": "relative" }} required />
+          <ShowPW onClick={showPWhandler} style={{ color: showPWstate ? "hsl(226, 17%, 57%)" : "hsl(226, 17%, 37%)" }} />
+        </div>
+        <Button type="submit" >Log In</Button>
+      </Form>
     </>
   )
 }
@@ -91,7 +97,7 @@ export const Button = styled.button`
   transform: scale(0.9);
   box-shadow: 0 1px 3px hsla(0, 0%, 0%, .2), inset 0 1px 0 hsl(224, 84%, 74% );
   }
-}
+
 `
 
 const ShowPW = styled(IoEye)`
@@ -110,22 +116,22 @@ export default Login
 // SMALL SUBMIT BUTTON
 // 
 // const Button = styled.button`
-  /* cursor: pointer; */
-  /* background-color: hsl(230, 64%, 63%);  */
-  /* border: none; */
-  /* padding: 10px 20px; */
-  /* color: white; */
-  /* font-size: 20px ; */
-  /* border-radius: 9px; */
-  /* box-shadow: 0 2px 1px hsla(0, 0%, 0%, .2), inset 0 1px 0 hsl(224, 84%, 74% ); */
-  /* text-shadow: 1px 1px 0px hsl(230, 64%, 43%); */
-  /* padding-left: 22px; */
-  /* transition: all 0.13s, box-shadow 0.13s; */
+/* cursor: pointer; */
+/* background-color: hsl(230, 64%, 63%);  */
+/* border: none; */
+/* padding: 10px 20px; */
+/* color: white; */
+/* font-size: 20px ; */
+/* border-radius: 9px; */
+/* box-shadow: 0 2px 1px hsla(0, 0%, 0%, .2), inset 0 1px 0 hsl(224, 84%, 74% ); */
+/* text-shadow: 1px 1px 0px hsl(230, 64%, 43%); */
+/* padding-left: 22px; */
+/* transition: all 0.13s, box-shadow 0.13s; */
 /*  */
-  /* &:active { */
-  /* transform: scale(0.9); */
-  /* box-shadow: 0 1px 3px hsla(0, 0%, 0%, .2), inset 0 1px 0 hsl(224, 84%, 74% ); */
-  /* } */
+/* &:active { */
+/* transform: scale(0.9); */
+/* box-shadow: 0 1px 3px hsla(0, 0%, 0%, .2), inset 0 1px 0 hsl(224, 84%, 74% ); */
+/* } */
 /*  */
 /* } */
 // `

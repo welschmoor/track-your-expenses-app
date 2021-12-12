@@ -1,14 +1,32 @@
 
 
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
+import AddExpenseForm from "../components/AddExpenseForm"
+import { AuthContext } from "../App"
+import { useNavigate, Navigate } from "react-router-dom"
 
-const About = () => {
+
+const CC = () => {
+  const { user } = useContext(AuthContext)
+  console.log("userrr", user)
+  const navigate = useNavigate ()
+
+  if (user === null) {
+    navigate('/')
+    return(
+      <div>
+        404...
+      </div>
+    )
+  
+  } 
+
   return (
     <Wrapper>
       <ContentWrapper>
-        <Title>About Expense Tracker</Title>
-        <P>Expense Tracker is a simple program, that let's you keep track of your spendings. Easy to use and with intuitive interface it let's you spot those pesky money burners in time. </P>
+        <Title>Add expense</Title>
+        <AddExpenseForm />
       </ContentWrapper>
     </Wrapper>
   )
@@ -36,4 +54,4 @@ const P = styled.p`
   text-shadow: 0px 1px 1px black;
   line-height: 1.4;
 `
-export default About
+export default CC

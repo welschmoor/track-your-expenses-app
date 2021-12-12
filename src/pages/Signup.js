@@ -7,11 +7,13 @@ import { firebaseAuth } from "../firebase"
 import Error from "../components/Error"
 import Filler from "../components/Filler"
 import { AuthContext } from "../App"
+import { useNavigate } from "react-router"
 
 const Signup = () => {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const { user, dispatch } = useContext(AuthContext)
+  const navigate = useNavigate()
   console.log(user)
 
   const signUp = async (email, password, displayName) => {
@@ -35,25 +37,13 @@ const Signup = () => {
     }
   }
 
-  const logOut = async () => {
-    setError(null)
-    setLoading(true)
 
-    try {
-      await firebaseAuth.signOut()
-      dispatch({ type: "LOGOUT" })
-      setLoading(false)
-    } catch (error) {
-      console.log(error)
-      setError(error.message)
-      setLoading(false)
-    }
-  }
 
 
   const submitHandler = (e) => {
     e.preventDefault()
-    signUp(e.target.email.value, e.target.password.value)
+    signUp(e.target.email.value, e.target.password.value, e.target.displayname.value)
+    navigate('/cc')
   }
 
   return (

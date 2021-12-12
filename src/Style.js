@@ -54,8 +54,11 @@ export const darkTheme = {
   navCol: "grey",
   bgCol: "#484D5E",
   textCol: "#fafafa",
+  text2Col: "#ebebeb",
+  text3Col: "hsl(240, 17%, 80%)",
   inputBg: "#3E4251",
   navMar: "20px",
+
 }
 
 
