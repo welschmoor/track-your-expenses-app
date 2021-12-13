@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 const Home = () => {
   return (
-    <Wrapper>
+    <HomeWrapper>
 
       <H1>Track Your Expenses</H1>
 
@@ -12,11 +12,11 @@ const Home = () => {
       <ImgWrapper>
         <IMG src="/ScreenShot.png" alt="hero" />
       </ImgWrapper>
-    </Wrapper>
+    </HomeWrapper>
   )
 }
 
-const Wrapper = styled.section`
+const HomeWrapper = styled.section`
   display: grid;
   grid-template-columns: 360px 1fr;
   padding: 100px 40px;

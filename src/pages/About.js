@@ -5,16 +5,16 @@ import styled from "styled-components"
 
 const About = () => {
   return (
-    <Wrapper>
+    <AboutWrapper>
       <ContentWrapper>
         <Title>About Expense Tracker</Title>
         <P>Expense Tracker is a simple program, that let's you keep track of your spendings. Easy to use and with intuitive interface it let's you spot those pesky money burners in time. </P>
       </ContentWrapper>
-    </Wrapper>
+    </AboutWrapper>
   )
 }
 
-const Wrapper = styled.section`
+const AboutWrapper = styled.section`
 
 `
 

@@ -25,17 +25,17 @@ const CC = () => {
   }
 
   return (
-    <Wrapper>
+    <CCWrapper>
       <ContentWrapper>
         <Title>Add expense</Title>
         <AddExpenseForm />
         {fetchedDocs && <List fetchedDocs={fetchedDocs} />}
       </ContentWrapper>
-    </Wrapper>
+    </CCWrapper>
   )
 }
 
-const Wrapper = styled.section`
+const CCWrapper = styled.section`
 
 `
 

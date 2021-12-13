@@ -43,7 +43,7 @@ const Signup = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     signUp(e.target.email.value, e.target.password.value, e.target.displayname.value)
-    navigate('/cc')
+    navigate('/')
   }
 
   return (
