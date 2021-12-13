@@ -1,14 +1,24 @@
 
-import { useEffect, useState} from "react"
+import { useEffect, useState, useRef} from "react"
 import { firestore } from "../firebase"
 
 
-const useCollection = (collection) => {
+const useCollection = (collection, _query) => {
   const [fetchedDocs, setFetchedDocs] = useState([])
   const [fetchError, setFetchError] = useState(null)
+  console.log("FDOCS:::", fetchedDocs)
+  // using ref because array _query gives infinite loop as a useEffect dependency
+  const query = useRef(_query).current
+ 
 
   useEffect(()=>{
     let collectionRef = firestore.collection(collection)
+
+    if (query) {
+      collectionRef = collectionRef.where(...query)
+    }
+
+
     const unsubscribe = collectionRef.onSnapshot((snapshot)=> {
       let results = []
       snapshot.docs.forEach(e => {
@@ -23,7 +33,7 @@ const useCollection = (collection) => {
     })
 
     return () => unsubscribe()
-  }, [collection])
+  }, [collection, query])
 
   return { fetchedDocs, fetchError }
 }

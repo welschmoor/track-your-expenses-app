@@ -11,27 +11,25 @@ import List from "../components/List"
 
 const CC = () => {
   const { user } = useContext(AuthContext)
-  const { fetchedDocs, fetchError } = useCollection("transactions")
-  console.log("userrr", user)
-  const navigate = useNavigate ()
-
+  const { fetchedDocs, fetchError } = useCollection("transactions", ['uid', '==', user.uid])
+  console.log("fetchedDocs", fetchedDocs)
+  const navigate = useNavigate()
 
   if (user === null) {
     navigate('/')
-    return(
+    return (
       <div>
         404...
       </div>
     )
-  } 
-
+  }
 
   return (
     <Wrapper>
       <ContentWrapper>
         <Title>Add expense</Title>
         <AddExpenseForm />
-        { fetchedDocs && <List fetchedDocs={fetchedDocs} />}
+        {fetchedDocs && <List fetchedDocs={fetchedDocs} />}
       </ContentWrapper>
     </Wrapper>
   )

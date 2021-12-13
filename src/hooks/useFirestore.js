@@ -19,6 +19,8 @@ const firestoreReducer = (state, action) => {
       return { ...state, loadingBool: true, document: null, success: false, error: null }
     case "ERROR":
       return { ...state, error: action.payload }
+    case "DELDOC":
+      return { ...state, document: null, loadingBool: false, error: null }
     default:
       return state
   }
@@ -34,8 +36,8 @@ export const useFirestore = collectionName => {
   const addDoc = async (doc) => {
     dispatch({ type: "PENDING" })
     try {
-      const createAt = timestamp.fromDate(new Date())
-      const addedDoc = await collectionRef.add({ ...doc, createAt })
+      const createdAt = timestamp.fromDate(new Date())
+      const addedDoc = await collectionRef.add({ ...doc, createdAt })
       dispatch({ type: "ADDDOC", payload: addedDoc })
     } catch (error) {
       dispatch({ type: "ERROR", payload: error.message })
@@ -43,7 +45,13 @@ export const useFirestore = collectionName => {
   }
 
   const delDoc = async id => {
-    collectionRef.doc(id)
+    dispatch({ type: "PENDING" })
+    try {
+      collectionRef.doc(id).delete()
+      dispatch({ type: "DELDOC" })
+    } catch (error) {
+      dispatch({ type: "ERROR", paylaod: "Delete failed" })
+    }
   }
 
   useEffect(() => {

@@ -3,9 +3,11 @@
 import React from "react"
 import styled from "styled-components"
 import { CgEuro } from "react-icons/cg"
-
+import { useFirestore } from "../hooks/useFirestore"
 
 const List = ({ fetchedDocs }) => {
+
+  const { delDoc } = useFirestore('transactions')
 
   const totalPrice = fetchedDocs.reduce((acc, each) => {
     return acc + Number(each.cost)
@@ -22,7 +24,7 @@ const List = ({ fetchedDocs }) => {
 
       {fetchedDocs.map(e => {
         return(
-          <LI key={e.id}>
+          <LI key={e.id} onDoubleClick={()=>delDoc(e.id)}>
             <ItemName>{e.item}</ItemName>
             <Price>{e.cost}</Price>
           </LI>
