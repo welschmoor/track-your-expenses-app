@@ -37,6 +37,7 @@ const List = ({ fetchedDocs }) => {
 }
 
 const Wrapper = styled.ul`
+  align-self: start;
   border-radius: 9px;
   background-color: ${p=>p.theme.inputBg};
   margin-top: 20px;

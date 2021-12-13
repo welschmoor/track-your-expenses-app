@@ -10,7 +10,7 @@ const Home = () => {
 
 
       <ImgWrapper>
-        <IMG src="/ScreenShot.png" alt="hero" />
+        <IMG src="/ScreenShot2.png" alt="hero" />
       </ImgWrapper>
     </HomeWrapper>
   )

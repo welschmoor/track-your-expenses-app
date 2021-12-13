@@ -7,6 +7,7 @@ import { AuthContext } from "../App"
 import { useNavigate, Navigate } from "react-router-dom"
 import useCollection from "../hooks/useCollection"
 import List from "../components/List"
+import Chart from "../components/Chart"
 
 
 const CC = () => {
@@ -29,7 +30,11 @@ const CC = () => {
       <ContentWrapper>
         <Title>Add expense</Title>
         <AddExpenseForm />
-        {fetchedDocs && <List fetchedDocs={fetchedDocs} />}
+        <CCGrid>
+          {fetchedDocs && <List fetchedDocs={fetchedDocs} />}
+          {fetchedDocs && <Chart fetchedDocs={fetchedDocs} />}
+
+        </CCGrid>
       </ContentWrapper>
     </CCWrapper>
   )
@@ -37,6 +42,12 @@ const CC = () => {
 
 const CCWrapper = styled.section`
 
+`
+
+const CCGrid = styled.div`
+  display: grid;
+  grid-template-columns: 400px 400px;
+  gap: 20px;
 `
 
 const ContentWrapper = styled.div`
