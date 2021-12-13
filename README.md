@@ -1,5 +1,10 @@
 # `Expense Tracker`
 
+![alt text](https://repository-images.githubusercontent.com/437014721/83c61d6b-8e31-475d-8dc2-7cdd6f950e9a)
+
+Visit the App here (use Google Chrome!):
+https://expense-tracker-c6eb2.web.app/
+
 Use Google Chrome !!! as Firefox does not have the font baldness and one other CSS property that I have used.
 
 Woohoo, finished a fullstack app. You can sign up, log in, add expenses and it will show the total sum, and it will plot expenses onto a graph. 
