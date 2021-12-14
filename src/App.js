@@ -9,8 +9,9 @@ import Signup from "./pages/Signup";
 import CC from "./pages/CC";
 import Navbar from "./components/Navbar"
 
+
 import GlobalStyle, { darkTheme, lightTheme } from "./Style";
-import { createContext, useReducer, useEffect } from "react"
+import { createContext, useReducer, useEffect, useState } from "react"
 import { firebaseAuth } from "./firebase";
 
 export const AuthContext = createContext()
@@ -31,6 +32,7 @@ const reducer = (state, action) => {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
+  const [darkMode, setDarkMode] = useState(true)
 
   useEffect(() => {
     const unsubscribe = firebaseAuth.onAuthStateChanged(user => {
@@ -43,11 +45,11 @@ function App() {
   return (
 
     <AuthContext.Provider value={{ ...state, dispatch }} >
-      <ThemeProvider theme={darkTheme || lightTheme} >
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme} >
         <GlobalStyle />
         {state.authBool && (
           <BrowserRouter>
-            <Navbar />
+            <Navbar sending={{ darkMode, setDarkMode }} />
             <Routes>
               <Route path="/" exact element={<Home />} />
               <Route path="/about" element={<About />} />

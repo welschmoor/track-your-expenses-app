@@ -1,5 +1,5 @@
 
-import React, { useState, useContext, useEffect } from "react"
+import React, { useState, useContext, useEffect, useRef } from "react"
 import styled from "styled-components"
 import { Label, INPUT, Button } from "../pages/Login"
 import { LogOutBtn } from "./Navbar"
@@ -9,10 +9,11 @@ import { useFirestore } from "../hooks/useFirestore"
 import { AuthContext } from "../App"
 
 const AddExpenseForm = () => {
-  const [ itemSt, setItemSt ] = useState('')
-  const [ euroSt, setEuroSt] = useState('')
+  const [itemSt, setItemSt] = useState('')
+  const [euroSt, setEuroSt] = useState('')
   const { addDoc, response } = useFirestore('transactions')
   const { user } = useContext(AuthContext)
+  const inputRef = useRef() // to re-focus item form input
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -24,9 +25,10 @@ const AddExpenseForm = () => {
     addDoc(newEntry)
     setItemSt('')
     setEuroSt('')
+    inputRef.current.focus()
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     if (response.success) {
       setItemSt('')
       setEuroSt('')
@@ -38,11 +40,11 @@ const AddExpenseForm = () => {
     <Form name="add_expense_form" onSubmit={submitHandler} >
       <div>
         <Label htmlFor="item_bought">What did you buy?</Label>
-        <INPUT type="text" name="item_bought" id="item_bought" required placeholder="tomatoes" onChange={e => setItemSt(e.target.value) } value={itemSt} />
+        <INPUT ref={inputRef} type="text" name="item_bought" id="item_bought" required placeholder="tomatoes" onChange={e => setItemSt(e.target.value)} value={itemSt} />
       </div>
       <div style={{ position: "relative" }} >
         <Label htmlFor="dollar_amount">How much did it cost?</Label>
-        <INPUT type="number" name="dollar_amount" id="dollar_amount" required placeholder="5" onChange={e => setEuroSt(e.target.value) } value={euroSt} />
+        <INPUT type="number" name="dollar_amount" id="dollar_amount" required placeholder="5" onChange={e => setEuroSt(e.target.value)} value={euroSt} />
         <EuroIcon />
       </div>
       <div style={{ display: "flex", flexDirection: "column" }}>

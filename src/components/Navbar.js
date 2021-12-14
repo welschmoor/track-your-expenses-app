@@ -6,8 +6,11 @@ import { useContext } from "react"
 import { AuthContext } from "../App"
 import { Button } from "../pages/Login"
 import { IoLogOutOutline } from "react-icons/io5"
+import ThemeSwitch from "./ThemeSwitch"
 
-const Navbar = () => {
+
+
+const Navbar = ({ sending: { darkMode, setDarkMode } }) => {
   const { logOut, error, loading } = useLogout()
   const { user } = useContext(AuthContext)
   const navigate = useNavigate()
@@ -32,6 +35,7 @@ const Navbar = () => {
         </HomeAboutDiv>
 
         <LogInDiv>
+          <ThemeSwitch setDarkMode={setDarkMode} />
           {!user && <><li>
             <NavLinkStyled to="/login" >Login</NavLinkStyled>
           </li>
@@ -68,7 +72,7 @@ const UL = styled.ul`
 const NavLinkStyled = styled(NavLink)`
   font-weight: 600;
   margin-bottom: 10px;
-  text-shadow: 1px 1px 0px hsl(240, 17%, 24%);
+  text-shadow: ${p => p.theme.textShadowNav};
   color: ${p => p.theme.textCol};
   padding-bottom: 20px;
   padding-top: 16px;
@@ -91,8 +95,8 @@ const LogInDiv = styled.div`
 `
 
 export const LogOutBtn = styled(Button)`
-  background-color: ${p => p.theme.bgCol};
-  color: ${p => p.theme.text2Col};
+  background-color: ${p => p.theme.logOutBtnBgCol};
+  color: ${p => p.theme.logOutIconCol};
   border: none;
   font-size: 0.8rem;
   width: 140px;
@@ -116,12 +120,12 @@ const HelloMsg = styled.div`
   font-size: 0.8rem;
   font-style: italic;
   color: ${p => p.theme.text3Col};
-  text-shadow: 1px 1px 1px black;
+  text-shadow: ${p => p.theme.textShadow1px};
 
 `
 
 const LogOutIcon = styled(IoLogOutOutline)`
-  color: ${p => p.theme.text2Col};
+  color: ${p => p.theme.logOutIconCol};
   font-size: 0rem;
   ${LogOutBtn}:hover & {
     font-size: 1.4rem;

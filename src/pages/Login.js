@@ -21,11 +21,11 @@ const Login = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     try {
-      logIn( e.target.email.value, e.target.password.value)
+      logIn(e.target.email.value, e.target.password.value)
       if (!error.inlcudes("no user")) {
         navigate("/cc")
       }
-    } catch(error) {
+    } catch (error) {
       console.log("error", error.message)
     }
   }
@@ -62,7 +62,7 @@ export const Label = styled.label`
   display: inline-block;
   font-weight: 600;
   margin-bottom: 6px;
-  text-shadow: 1px 1px 0px hsl(240, 17%, 24%);
+  text-shadow: ${p => p.theme.textShadowNav};
   color: ${p => p.theme.textCol};
 `
 
@@ -77,7 +77,7 @@ export const INPUT = styled.input`
   box-shadow: 0 2px 0px 0px hsla(0, 0%, 100%, .15), inset 0 2px 2px hsla(0, 0%, 0%, 0.1);
   box-shadow: 0 1px 1px 0px hsla(0, 0%, 100%, .15), inset 0 2px 2px hsla(0, 0%, 0%, 0.1);
   font-size: 20px;
-  color: hsl(240, 17%, 80%);
+  color: ${p => p.theme.text3Col};
 
   &:focus {
     outline: none;
@@ -94,8 +94,8 @@ export const Button = styled.button`
   color: white;
   font-size: 20px ;
   border-radius: 9px;
-  box-shadow: 0 2px 1px hsla(0, 0%, 0%, .2), inset 0 1px 0 hsl(224, 84%, 74% );
-  text-shadow: 1px 1px 0px hsl(230, 64%, 43%);
+  box-shadow: ${p=>p.theme.boxShadowBlueBtn};
+  text-shadow: ${p => p.theme.textShadowLogOutBtn};
   padding-left: 22px;
   transition: all 0.13s, box-shadow 0.13s;
 

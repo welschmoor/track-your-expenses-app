@@ -53,6 +53,7 @@ const GlobalStyle = createGlobalStyle`
 export const darkTheme = {
   navCol: "grey",
   bgCol: "#484D5E",
+  bgColLight: "#585D6E",
   textCol: "#fafafa",
   text2Col: "#ebebeb",
   text3Col: "hsl(240, 17%, 80%)",
@@ -61,13 +62,42 @@ export const darkTheme = {
   inputBg: "#3E4251",
   navMar: "20px",
 
+  logOutBtnBgCol: "#484D5E",
+  logOutIconCol: "#ebebeb",
+
+  textShadow1px: "1px 1px 1px black",
+  textShadowNav: "1px 1px 0px hsl(240, 17%, 24%)",
+  textShadowH1: "2px 2px 2px black",
+  textShadowLogOutBtn: "1px 1px 0px hsl(230, 64%, 43%)",
+  textShadowLabel: "none",
+
+  boxShadowBlueBtn: "0 2px 1px hsla(0, 0%, 0%, .2), inset 0 1px 0 hsl(224, 84%, 74% )",
+
 }
 
 
 export const lightTheme = {
-  navCol: "grey",
-  bgCol: "lightgrey",
+  navCol: "white",
+  bgCol: "white",
+  bgColLight: "#585D6E",
   textCol: "black",
+  text2Col: "black",
+  text3Col: "black",
+  text4Col: "black",
+  text5Col: "black",
+  inputBg: "#f5f5f5",
+  navMar: "20px",
+
+  logOutBtnBgCol: "hsl(230, 64%, 63%)",
+  logOutIconCol: "white",
+
+  textShadow1px: "none",
+  textShadowNav: "none",
+  textShadowH1: "none",
+  textShadowLogOutBtn: "none",
+  textShadowLabel: "none",
+
+  boxShadowBlueBtn: "0 2px 5px hsla(0, 0%, 0%, .2), inset 0 1px 0 hsl(224, 84%, 74% )",
 }
 
 export default GlobalStyle

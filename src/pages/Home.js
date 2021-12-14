@@ -20,7 +20,7 @@ const HomeWrapper = styled.section`
   display: grid;
   grid-template-columns: 360px 1fr;
   padding: 100px 40px;
-  background: linear-gradient(#3E4251, #484D5E);
+  background: linear-gradient(${p => p.theme.inputBg}, ${p => p.theme.bgCol});
 `
 
 const ImgWrapper = styled.div`
@@ -69,7 +69,7 @@ const H1 = styled.h1`
   line-height: 1;
   color: ${p => p.theme.textCol};
   text-transform: uppercase;
-  text-shadow: 2px 2px 2px black;
+  text-shadow: ${p => p.theme.textShadowH1};
 
   font-weight: 2000;
 `

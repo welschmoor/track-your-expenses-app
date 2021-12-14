@@ -59,7 +59,7 @@ const Title = styled.h2`
   font-size: 1.5rem;
   color: ${p => p.theme.textCol};
   margin-bottom: 20px;
-  text-shadow: 1px 1px 1px black;
+  text-shadow: ${p => p.theme.textShadow1px};
 `
 
 const P = styled.p`
