@@ -6,7 +6,6 @@ import { firestore } from "../firebase"
 const useCollection = (collection, _query) => {
   const [fetchedDocs, setFetchedDocs] = useState([])
   const [fetchError, setFetchError] = useState(null)
-  console.log("FDOCS:::", fetchedDocs)
   // using ref because array _query gives infinite loop as a useEffect dependency
   const query = useRef(_query).current
  

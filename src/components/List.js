@@ -12,7 +12,7 @@ const List = ({ fetchedDocs }) => {
   const totalPrice = fetchedDocs.reduce((acc, each) => {
     return acc + Number(each.cost)
   }, 0)
-  console.log("TT", totalPrice)
+
 
   return (
     <Wrapper>

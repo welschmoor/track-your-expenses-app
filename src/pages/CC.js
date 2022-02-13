@@ -13,7 +13,6 @@ import Chart from "../components/Chart"
 const CC = () => {
   const { user } = useContext(AuthContext)
   const { fetchedDocs, fetchError } = useCollection("transactions", ['uid', '==', user.uid])
-  console.log("fetchedDocs", fetchedDocs)
   const navigate = useNavigate()
 
   if (user === null) {

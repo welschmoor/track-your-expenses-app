@@ -9,7 +9,6 @@ const Chart = ({ fetchedDocs }) => {
   const svgRef = useRef()
 
   const highestCost = data.reduce((acc, each) => {
-    console.log(each.cost)
     return Number(each.cost) > acc ? Number(each.cost) : acc
   }, 0)
 

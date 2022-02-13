@@ -41,7 +41,6 @@ function App() {
     })
   }, [])
 
-  console.log("state:::", state)
   return (
 
     <AuthContext.Provider value={{ ...state, dispatch }} >

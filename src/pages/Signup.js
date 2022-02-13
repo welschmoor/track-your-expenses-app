@@ -14,7 +14,7 @@ const Signup = () => {
   const [loading, setLoading] = useState(false)
   const { user, dispatch } = useContext(AuthContext)
   const navigate = useNavigate()
-  console.log(user)
+
 
   const signUp = async (email, password, displayName) => {
     setError(null)
@@ -23,7 +23,6 @@ const Signup = () => {
     try {
       const response = await firebaseAuth.createUserWithEmailAndPassword(email, password)
       if (!response) throw new Error("Signup failed")
-      console.log(response.user)
 
       await response.user.updateProfile({ displayName })  // we update, because we want extra properties (displayName)
       dispatch({ type: "LOGIN", payload: response.user })
@@ -31,17 +30,29 @@ const Signup = () => {
       setLoading(false)
       setError(null)
     } catch (error) {
-      console.log(error)
       setError(error.message)
       setLoading(false)
+      setTimeout(() => { setError(null) }, 4200)
     }
   }
 
-
-
-
   const submitHandler = (e) => {
     e.preventDefault()
+    if (e.target.password.value.length < 6) {
+      setError("Password must be at least 6 characters long")
+      setTimeout(() => { setError(null) }, 4200)
+      return
+    }
+    if (e.target.password.value !== e.target.passwordRepeat.value) {
+      setError("Passwords don't match!")
+      setTimeout(() => { setError(null) }, 4200)
+      return
+    }
+    if (!e.target.email.value.includes("@")) {
+      setError("emails have @ sign")
+      setTimeout(() => { setError(null) }, 4200)
+      return
+    }
     signUp(e.target.email.value, e.target.password.value, e.target.displayname.value)
     navigate('/')
   }
@@ -59,8 +70,8 @@ const Signup = () => {
           <INPUT type="password" name="password" id="password" required />
         </div>
         <div>
-          <Label htmlFor="passwordR">Repeat your password </Label>
-          <INPUT type="password" name="passwordR" id="passwordR" required />
+          <Label htmlFor="passwordRepeat">Repeat your password </Label>
+          <INPUT type="password" name="passwordRepeat" id="passwordRepeat" required />
         </div>
         <div>
           <Label htmlFor="displayname">Enter your display name </Label>
