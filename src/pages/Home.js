@@ -44,6 +44,7 @@ const ImgWrapper = styled.div`
 const IMG = styled.img`
  
   width: 100%;
+  max-width: 900px;
   box-shadow: 1px 2px 3px 3px rgba(0, 0, 0, 0.154);
   transform:rotateY(-20deg) rotateX(20deg) ;
   transform-origin: center;

@@ -63,8 +63,8 @@ const ItemName = styled.h3`
 `
 
 const Price = styled.h3`
-  color: #99DD99;
-  text-shadow: 1px 1px 0px black;
+  color:${p => p.theme.priceColor};
+  text-shadow: ${p => p.theme.textShadowPrice};
 `
 
 const Total = styled.h3`

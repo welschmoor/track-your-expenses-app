@@ -26,7 +26,7 @@ const Chart = ({ fetchedDocs }) => {
       .style('overflow', 'visible')
       .style('margin-top', '10px')
       .style('margin-bottom', '20px')
-      .style('margin-left', '40px')
+      .style('margin-left', '50px')
       .style('margin-right', '50px')
 
     // scaling

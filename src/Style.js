@@ -70,6 +70,9 @@ export const darkTheme = {
   textShadowH1: "2px 2px 2px black",
   textShadowLogOutBtn: "1px 1px 0px hsl(230, 64%, 43%)",
   textShadowLabel: "none",
+  textShadowPrice: "1px 1px 0px black",
+
+  priceColor: "#99DD99",
 
   boxShadowBlueBtn: "0 2px 1px hsla(0, 0%, 0%, .2), inset 0 1px 0 hsl(224, 84%, 74% )",
 
@@ -96,6 +99,9 @@ export const lightTheme = {
   textShadowH1: "none",
   textShadowLogOutBtn: "none",
   textShadowLabel: "none",
+  textShadowPrice: "none",
+
+  priceColor: "hsl(120, 50%, 33%)",
 
   boxShadowBlueBtn: "0 2px 5px hsla(0, 0%, 0%, .2), inset 0 1px 0 hsl(224, 84%, 74% )",
 }
